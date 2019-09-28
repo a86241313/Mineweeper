@@ -108,9 +108,14 @@
 
 </script>
 <style>
-.row{margin:20px;
-border:1px solid LightSteelBlue;
-padding:10px;height:80vh}
-.col-3{padding:3px;border-right:1px LightStellBlue solid;}
+.row {
+  margin:20px;
+  border:1px solid LightSteelBlue;
+  padding:10px;height:80vh
+    }
+.col-3 {
+  padding:3px;
+  border-right:1px LightStellBlue solid;
+  }
 
 </style>
