@@ -17,6 +17,61 @@
   </script>
 
   <script>
+    // $(document).ready(function () {
+    //       $('.btn').on('click', function () {
+    // 1.簡單測試抓到資料功能
+    // $.ajax({
+    // url:'https://ruienyuski.github.io/git_test/data222.json',
+    // 	success:function(response){
+    // 		$('.info').html('抓到資料囉!');
+    // 	},
+    // 	error:function(xhr){
+    // 		  alert("發生錯誤: " + xhr.status + " " + xhr.statusText);
+    // 	}
+    // });
+
+    //2.顯示json 在網頁上
+    //     $.ajax({
+    //       url: '',
+    //       type: 'get',
+    //       data: {
+    //         querytag: data
+    //       }, // 輸入的資料
+    //       error: function (xhr) {}, // 錯誤後執行的函數
+    //       success: function (response) {} // 成功後要執行的函數
+    //     });
+
+    //     $.ajax({
+    //       type: 'GET', // post/get
+    //       url: '', // url位置
+    //       dataType: 'json',
+    //       success: function (response) {
+    //         $.each(response, function (index, element) {
+    //           $('tbody').append(
+    //             $('<tr><th>', {
+    //               text: [index + 1]
+    //             }, '</th>'),
+    //             $('<td>', {
+    //               text: element.mail
+    //             }, '</td>'),
+
+    //             $('<td>', {
+    //               text: element.status
+    //             }, '</td>'),
+
+    //             $('<button type="button" class="btn btn-primary btn-sm" onclick="ReadMore(index)">', {
+    //               text: "More"
+    //             }, '</button></td>'),
+    //           );
+    //         });
+    //       },
+    //       error: function (xhr) {
+    //         alert("系統忙碌中");
+    //       }
+    //     });
+
+    //   });
+    // });
     // function creatTable(data) {
     //   //這個函式的引數可以是從後臺傳過來的也可以是從其他任何地方傳過來的
     //   //這裡我假設這個data是一個長度為5的字串陣列 我要把他放在表格的一行裡面，分成五列
@@ -29,13 +84,31 @@
     //   //現在tableData已經生成好了，把他賦值給上面的tbody
     //   $("#tbody1").html(tableData)
     // }
+    // $(document).ready(function () {
+    //   for () {}
+    // })
 
-    function ReadMore() {
+    // function getData(index) {
+    //   var req = new XMLHttpRequest();
+    //   req.open("get", "");
+    //   req.onload = function () {
+    //     var
+    //   }
+    // }
+    // ===============================================================================
+    function ReadMore(index) {
       var t = document.getElementById('table');
       t.style.display = 'none';
       var t1 = document.getElementById('Info');
       t1.style.display = 'block';
 
+    }
+
+    function MemberList() {
+      var t = document.getElementById('table');
+      t.style.display = 'block';
+      var t1 = document.getElementById('Info');
+      t1.style.display = 'none';
     }
   </script>
   <style>
@@ -51,7 +124,7 @@
       height: 32px;
     }
 
-    
+
 
     #Info {
       display: none;
@@ -119,7 +192,7 @@
         <div class="col-3">
           <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <a class="nav-link show active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
-              aria-controls="v-pills-home" aria-selected="false">會員資料</a>
+              aria-controls="v-pills-home" aria-selected="false" onclick="MemberList()">會員資料</a>
             <a class="nav-link show" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
               aria-controls="v-pills-profile" aria-selected="false">發布公告</a>
           </div>
@@ -146,9 +219,10 @@
                       <td>Larry</td>
                       <td>normal</td>
                       <td>
-                        <button type="button" class="btn btn-primary btn-sm" onclick="ReadMore()">More</button></td>
+                        <button type="button" class="btn btn-primary btn-sm" onclick="ReadMore()">More</button>
                       </td>
                     </tr>
+
                   </tbody>
                 </table>
               </div>
@@ -157,18 +231,17 @@
                   <div class="col-10 h1">
                     [[Chopsy]]
                     <span class="h6">[[停用]]</span>
-                    <p>
-                      <h5>[[s1042122@pu.edu.tw]]
+                    <p class="h5">
+                      [s1042122@pu.edu.tw]]
                     </p>
                   </div>
                   <div class="col-2 h1">
-                    <button type="button"
-                    class="btn btn-success my-2 my-lg-0">解除</button>
-                    <button type="button"
-                    class="btn btn-danger my-2 my-lg-0">停權</button>
+                    <button type="button" class="btn btn-danger">停權</button>
+                    <button type="button" class="btn btn-success">解除</button>
+
                   </div>
-                
-                   
+
+
 
 
                   <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -188,9 +261,9 @@
 
                   <div class="nav w-100 nav-tabs" id="nav-tab" role="tablist">
                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
-                      aria-controls="nav-home" aria-selected="true">Home</a>
+                      aria-controls="nav-home" aria-selected="true">登入紀錄</a>
                     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
-                      aria-controls="nav-profile" aria-selected="false">Profile</a>
+                      aria-controls="nav-profile" aria-selected="false">金幣紀錄</a>
                     <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
                       aria-controls="nav-contact" aria-selected="false">Contact</a>
                   </div>
@@ -206,6 +279,11 @@
                 </div>
               </div>
             </div>
+
+
+
+
+
             <!-- 公告 -->
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
 
@@ -223,24 +301,25 @@
                   <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                     data-parent="#accordionExample">
                     <div class="card-body">
-
-                      <input type="text" placeholder="請輸入公告標題">
-                      <br>
-                      <br>
+                      <div class="form-group">
+                        <input type="text" placeholder="請輸入公告標題">
+                        <button type="button" class="btn btn-danger float-right">取消</button>
+                        <button type="button" class="btn btn-success  float-right mr-3">確認</button>
+                      </div>
                       <textarea placeholder="請輸入公告內容"></textarea>
                     </div>
                   </div>
                 </div>
                 <div class="card">
-                  <div class="card-header" id="headingTwo">
+                  <div class="card-header" id="head2">
                     <h2 class="mb-0">
                       <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapse2">
                         #2
                       </button>
                     </h2>
                   </div>
-                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                  <div id="collapseTwo" class="collapse" aria-labelledby="head2" data-parent="#accordionExample">
                     <div class="card-body">
                       <input type="text" placeholder="請輸入公告標題">
                       <br>
@@ -253,11 +332,29 @@
               </div>
             </div>
           </div>
+          <!-- 換頁符號 -->
+          <nav aria-label="Page navigation example">
+            <ul class="pagination fixed-bottom justify-content-end">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>
   </div>
-  </div>
+
 
 
 
