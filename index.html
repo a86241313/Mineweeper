@@ -17,17 +17,20 @@
   </script>
 
   <script>
-    // $(document).ready(function () {
-    //       $('.btn').on('click', function () {
-    // 1.簡單測試抓到資料功能
+    // var xhr = new XMLHttpRequest();
+    // xhr.open = ('GET', 'http://jsoneditoronline.org/?id=7e4a2f7fe43e44b19ea4da35fd2921cd', true);
+    // xhr.send('null');
+    // // $(document).ready(function () {
+    // //       $('.btn').on('click', function () {
+    // // 1.簡單測試抓到資料功能
     // $.ajax({
-    // url:'https://ruienyuski.github.io/git_test/data222.json',
-    // 	success:function(response){
-    // 		$('.info').html('抓到資料囉!');
-    // 	},
-    // 	error:function(xhr){
-    // 		  alert("發生錯誤: " + xhr.status + " " + xhr.statusText);
-    // 	}
+    //   url: 'http://jsoneditoronline.org/?id=7e4a2f7fe43e44b19ea4da35fd2921cd',
+    //   success: function (response) {
+    //     $('title').html('抓到資料囉!');
+    //   },
+    //   error: function (xhr) {
+    //     alert("發生錯誤: " + xhr.status + " " + xhr.statusText);
+    //   }
     // });
 
     //2.顯示json 在網頁上
@@ -96,20 +99,23 @@
     //   }
     // }
     // ===============================================================================
+    //  Hide User Table
     function ReadMore(index) {
-      var t = document.getElementById('table');
-      t.style.display = 'none';
-      var t1 = document.getElementById('Info');
-      t1.style.display = 'block';
+      var HUT = document.getElementById('table');
+      HUT.style.display = 'none';
+      var UserInfo = document.getElementById('Info');
+      UserInfo.style.display = 'block';
 
     }
-
-    function MemberList() {
-      var t = document.getElementById('table');
-      t.style.display = 'block';
-      var t1 = document.getElementById('Info');
-      t1.style.display = 'none';
+    // Show User table
+    function ShowMemberList() {
+      var SUT = document.getElementById('table');
+      SUT.style.display = 'block';
+      var UserInfo = document.getElementById('Info');
+      UserInfo.style.display = 'none';
     }
+
+    // Load User table
   </script>
   <style>
     #ban {
@@ -166,7 +172,7 @@
   <title>Mineweeper</title>
 
 <body>
-  <div>
+ 
     <nav class="navbar navbar-dark bg-dark">
       <b><a class="navbar-brand" href="#">
           <img src="./src/assets/icon.svg" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -182,11 +188,12 @@
         </div>
       </div>
     </nav>
-  </div>
+  
 
   <div class="container">
 
     <!-- 左側欄位 -->
+
     <div class="bd-example bd-example-tabs">
       <div class="row leftNav">
         <div class="col-3">
