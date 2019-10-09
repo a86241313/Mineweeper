@@ -15,20 +15,22 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
     integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
   </script>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+    integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
   <script>
+    $(document).ready(function () {
+      $.ajax({
+        url: 'https://ruienyuski.github.io/git_test/data222.json',
+        success: function (response) {
+          $('.info').html('抓到資料囉!');
+        },
+        error: function (xhr) {
+          alert("發生錯誤: " + xhr.status + " " + xhr.statusText);
+        }
+      });
+    })
     // $(document).ready(function () {
     //       $('.btn').on('click', function () {
-    // 1.簡單測試抓到資料功能
-    // $.ajax({
-    // url:'https://ruienyuski.github.io/git_test/data222.json',
-    // 	success:function(response){
-    // 		$('.info').html('抓到資料囉!');
-    // 	},
-    // 	error:function(xhr){
-    // 		  alert("發生錯誤: " + xhr.status + " " + xhr.statusText);
-    // 	}
-    // });
 
     //2.顯示json 在網頁上
     //     $.ajax({
@@ -112,19 +114,16 @@
     }
   </script>
   <style>
-    #ban {
-      background-image: url("./src/assets/ban.png");
-      background-color: rgba(255, 255, 255, 1);
-      background-repeat: no-repeat;
-      outline: none;
-      border: 0;
-      background-position: center;
-      border-radius: 32px;
-      width: 32px;
-      height: 32px;
+    table {
+      table-layout: fixed;
+      font-size: 12px;
     }
 
 
+
+    th {
+      font-size: 14px;
+    }
 
     #Info {
       display: none;
@@ -139,17 +138,21 @@
 
     .col-3 {
       padding: 3px;
-      border-right: 1px LightStellBlue solid;
+      border-right: 1px solid LightStellBlue;
     }
 
     input {
       border-radius: 3px;
-
+      box-shadow: 0;
+      border: 1px solid lightgrey;
+      width: 70%;
     }
 
     table {
-      table-layout: fixed
+      table-layout: fixed;
     }
+
+
 
     textarea {
       width: 100%;
@@ -158,6 +161,7 @@
       max-height: 28vh;
       resize: none;
       border-radius: 3px;
+      border: 1px solid lightgrey;
     }
   </style>
 
@@ -215,9 +219,9 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <th>1</th>
-                      <td>Larry</td>
-                      <td>normal</td>
+                      <th>{{uId}}</th>
+                      <td>{{uName}}</td>
+                      <td>{{uStatus}}</td>
                       <td>
                         <button type="button" class="btn btn-primary btn-sm" onclick="ReadMore()">More</button>
                       </td>
@@ -229,20 +233,17 @@
               <div id="Info">
                 <div class="row">
                   <div class="col-10 h1">
-                    [[Chopsy]]
-                    <span class="h6">[[停用]]</span>
+                    {{uName}}
+                    <span class="h6">{{uStatus}}</span>
                     <p class="h5">
-                      [s1042122@pu.edu.tw]]
+                      {{uEmail}}
                     </p>
                   </div>
                   <div class="col-2 h1">
-                    <button type="button" class="btn btn-danger">停權</button>
-                    <button type="button" class="btn btn-success">解除</button>
+                    <button type="button" class="btn btn-danger" onclick=ban()>停權</button>
+                    <button type="button" class="btn btn-success" onclick=release()>解除</button>
 
                   </div>
-
-
-
 
                   <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item"><a class="nav-link active" id="home-tab" data-toggle="tab" href="#home"
@@ -270,10 +271,50 @@
 
                   <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                      AA.</div>
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">VB.
+                      <div id="table">
+                        <table class="table table-hover">
+                          <thead class="thead-light">
+                            <tr>
+                              <th></th>
+                              <th>ID</th>
+                              <th>Status</th>
+                              <th>Infomation</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th>{{oId}}</th>
+                              <td>{{uName}}</td>
+                              <td>{{uStatus}}</td>
+
+                            </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
-                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">.CCC
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                      <div id="table">
+                        <table class="table table-hover">
+                          <thead class="thead-light">
+                            <tr>
+                              <th>訂單號</th>
+                              <th>交易時間</th>
+                              <th>金額異動</th>
+                              <th>總金額</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th>{{id}}</th>
+                              <td>{{timestamp}}</td>
+                              <td>{{change}}</td>
+                              <td>{{total}}
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -291,12 +332,12 @@
 
                 <div class="card">
                   <div class="card-header" id="headingOne">
-                    <h2 class="mb-0">
-                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                        aria-expanded="true" aria-controls="collapseOne">
-                        #1
-                      </button>
-                    </h2>
+
+                    <button class="btn btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                      aria-expanded="true" aria-controls="collapseOne">
+                      <span class="h5">{{#1}}</span> [修改]
+                    </button>
+                    <button class="btn btn-sm btn-danger float-right"><i class="fas fa-trash-alt"></i></button>
                   </div>
                   <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                     data-parent="#accordionExample">
@@ -310,14 +351,14 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="card">
                   <div class="card-header" id="head2">
-                    <h2 class="mb-0">
-                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapse2">
-                        #2
-                      </button>
-                    </h2>
+
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                      data-target="#collapseTwo" aria-expanded="false" aria-controls="collapse2">
+                      #2
+                    </button>
                   </div>
                   <div id="collapseTwo" class="collapse" aria-labelledby="head2" data-parent="#accordionExample">
                     <div class="card-body">
@@ -332,8 +373,8 @@
               </div>
             </div>
           </div>
-          <!-- 換頁符號 -->
-          <nav aria-label="Page navigation example">
+          <!-- 換頁 -->
+          <!-- <nav aria-label="Page navigation example">
             <ul class="pagination fixed-bottom justify-content-end">
               <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous">
@@ -349,12 +390,11 @@
                 </a>
               </li>
             </ul>
-          </nav>
+          </nav> -->
         </div>
       </div>
     </div>
   </div>
-
 
 
 
